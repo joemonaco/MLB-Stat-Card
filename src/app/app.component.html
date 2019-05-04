@@ -10,7 +10,7 @@
   <ng-template #results>
     <h3>{{ numReturned }} Results Found For "{{ searchTerm }}"</h3>
     <ng-container *ngIf="numReturned > 1; else onePlayer">
-      <div *ngFor="let item of player" class="results">
+      <div *ngFor="let item of players" class="results">
         {{ item.name_first }} {{ item.name_last }}
       </div>
     </ng-container>
