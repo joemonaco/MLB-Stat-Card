@@ -1,21 +1,5 @@
 <h1>MLB DATA</h1>
-
-<input #box (keyup)="onEnter(box.value)" (keyup.enter)="getData()" />
-<button [disabled]="value == ''" (click)="getData()">Search</button>
-
-<div *ngIf="buttonClicked">
-  <ng-container *ngIf="numReturned == -1; else results">
-    <h3>No Results Found For "{{ searchTerm }}"</h3>
-  </ng-container>
-  <ng-template #results>
-    <h3>{{ numReturned }} Results Found For "{{ searchTerm }}"</h3>
-    <ng-container *ngIf="numReturned > 1; else onePlayer">
-      <div *ngFor="let item of players" class="results">
-        {{ item.name_first }} {{ item.name_last }}
-      </div>
-    </ng-container>
-    <ng-template #onePlayer>
-      <div class="results">{{ player.name_first }} {{ player.name_last }}</div>
-    </ng-template>
-  </ng-template>
+<!-- <app-home></app-home> -->
+<div>
+  <router-outlet></router-outlet>
 </div>
