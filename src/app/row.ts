@@ -1,0 +1,31 @@
+export interface Row {
+  position: "LF";
+  birth_country: String;
+  weight: String;
+  birth_state: String;
+  name_display_first_last: String;
+  college: String;
+  height_inches: String;
+  name_display_roster: String;
+  sport_code: String;
+  bats: String;
+  name_first: String;
+  team_code: String;
+  birth_city: String;
+  height_feet: String;
+  pro_debut_date: String;
+  team_full: String;
+  team_abbrev: String;
+  birth_date: String;
+  throws: String;
+  league: String;
+  name_display_last_first: String;
+  position_id: String;
+  high_school: String;
+  name_use: String;
+  player_id: String;
+  name_last: String;
+  team_id: String;
+  service_years: String;
+  active_sw: String;
+}
