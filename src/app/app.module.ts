@@ -11,9 +11,10 @@ import { PlayerDetailsService } from "./services/player-details.service";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./components/home/home.component";
 import { PlayerDetailComponent } from "./components/player-detail/player-detail.component";
+import { TeamsComponent } from './components/teams/teams.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PlayerDetailComponent],
+  declarations: [AppComponent, HomeComponent, PlayerDetailComponent, TeamsComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [SearchServiceService, PlayerDetailsService],
   bootstrap: [AppComponent]

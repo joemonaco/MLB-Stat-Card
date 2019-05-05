@@ -1,7 +1,11 @@
+<a [routerLink]="['/teams']">TEAMS</a>
 <h1>HOME PAGE</h1>
-<!-- #box (keyup)="onEnter(box.value) -->
-<input #box (keyup)="onEnter(box.value)" (keyup.enter)="getData()" />
-<button [disabled]="value == ''" (click)="getData()">Search</button>
+<input
+  #box
+  (keyup)="onEnter(box.value)"
+  (keyup.enter)="getData()"
+  placeholder="Enter a name"
+/>
 
 <ng-container *ngIf="buttonClicked; else showAll">
   <ng-container *ngIf="numReturned == -1; else results">
@@ -77,3 +81,5 @@
     </div>
   </div>
 </ng-template>
+
+<!-- <router-outlet></router-outlet> -->
