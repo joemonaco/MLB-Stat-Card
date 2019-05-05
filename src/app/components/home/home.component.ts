@@ -45,24 +45,22 @@ export class HomeComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustUrl(photoURL);
   }
   getData() {
-    if (this.value != "") {
-      this.searchTerm = this.value;
+    this.searchTerm = this.value;
 
-      this.searchService.getPlayers(this.searchTerm).subscribe(data => {
-        let res = data["search_player_all"];
-        let query = res["queryResults"];
-        let row = query["row"];
-        if (row != null) {
-          this.numReturned = row.length;
-          this.players = row;
-          console.log(this.players);
-        } else {
-          this.numReturned = -1;
-        }
+    this.searchService.getPlayers(this.searchTerm).subscribe(data => {
+      let res = data["search_player_all"];
+      let query = res["queryResults"];
+      let row = query["row"];
+      if (row != null) {
+        this.numReturned = row.length;
+        this.players = row;
+        console.log(this.players);
+      } else {
+        this.numReturned = -1;
+      }
 
-        this.buttonClicked = true;
-      });
-    }
+      this.buttonClicked = true;
+    });
   }
 
   onEnter(v) {
