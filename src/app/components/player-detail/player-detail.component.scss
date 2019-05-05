@@ -2,6 +2,56 @@ h1 {
   font-size: 3rem;
 }
 
+body {
+  text-align: center;
+
+  background-color: rgb(155, 155, 155);
+}
+
+// * {
+//   background-color: rgb(155, 155, 155);
+// }
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 li {
   font-size: 2rem;
+  list-style-type: none;
+}
+
+.card {
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  align-content: center;
+  justify-content: center;
+  // margin-left: 200px;
+}
+
+.logo-img {
+  position: absolute;
+  top: 220px;
+  left: 950px;
+  width: 80px;
+  height: 80px;
+  z-index: 3;
+}
+
+.player-img {
+  z-index: 1;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 600px;
+
+  box-shadow: 0 16px 18px 0 rgba(0, 0, 0, 0.6);
+  transition: 0.3s;
+  border-radius: 30px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

@@ -1,17 +1,23 @@
-<h1>{{ firstName }} {{ lastName }}</h1>
-
-<div class="stats">
-  <ul>
-    <li>AB: {{ details.ab }}</li>
-    <li>Hits: {{ details.h }}</li>
-    <li>Runs: {{ details.r }}</li>
-    <li>RBI: {{ details.rbi }}</li>
-    <li>Home Runs: {{ details.hr }}</li>
-    <li>AVG: {{ details.avg }}</li>
-    <li>OBP: {{ details.obp }}</li>
-    <li>Slugging: {{ details.slg }}</li>
-    <li>Strikeouts: {{ details.so }}</li>
-    <li>Extra Base Hits: {{ details.xbh }}</li>
-    <li>Stolen Bases: {{ details.sb }}</li>
-  </ul>
+<div class="all">
+  <div class="card">
+    <h1 class="name">{{ firstName }} {{ lastName }}</h1>
+    <img class="logo-img" [src]="playerLogoURL" />
+    <img class="player-img" [src]="playerPhotoURL" />
+  </div>
+  <!-- 
+  <div class="stats">
+    <ul>
+      <li>AB: {{ details.ab }}</li>
+      <li>Hits: {{ details.h }}</li>
+      <li>Runs: {{ details.r }}</li>
+      <li>RBI: {{ details.rbi }}</li>
+      <li>Home Runs: {{ details.hr }}</li>
+      <li>AVG: {{ details.avg }}</li>
+      <li>OBP: {{ details.obp }}</li>
+      <li>Slugging: {{ details.slg }}</li>
+      <li>Strikeouts: {{ details.so }}</li>
+      <li>Extra Base Hits: {{ details.xbh }}</li>
+      <li>Stolen Bases: {{ details.sb }}</li>
+    </ul>
+  </div> -->
 </div>

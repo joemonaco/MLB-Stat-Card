@@ -16,9 +16,12 @@ export class PlayerDetailComponent implements OnInit {
   ) {}
 
   playerID: String;
+  playerTeamID: String;
 
   firstName: String;
   lastName: String;
+  playerPhotoURL: String;
+  playerLogoURL: String;
 
   details: Observable<PlayerDetail[]>;
 
@@ -27,6 +30,17 @@ export class PlayerDetailComponent implements OnInit {
       this.playerID = params["playerID"];
       this.firstName = params["firstName"];
       this.lastName = params["lastName"];
+      this.playerTeamID = params["teamID"];
+
+      this.playerLogoURL =
+        "https://www.mlbstatic.com/mlb.com/builds/site-core/c6e9b7fc054c06b6fb6ee6358c484d49b479cc9b_1554990847/images/logos/team-primary-on-light/" +
+        this.playerTeamID +
+        ".svg";
+
+      this.playerPhotoURL =
+        "https://securea.mlb.com/mlb/images/players/head_shot/" +
+        this.playerID +
+        "@2x.jpg";
       this.detailService.getDetails(this.playerID).subscribe(data => {
         let res = data["sport_hitting_tm"];
         let query = res["queryResults"];

@@ -50,8 +50,13 @@ export class HomeComponent implements OnInit {
     this.value = v;
   }
 
-  showDetails(playerID: String, firstName: String, lastName: String) {
+  showDetails(
+    playerID: String,
+    firstName: String,
+    lastName: String,
+    teamID: String
+  ) {
     console.log(playerID);
-    this.router.navigate(["/details", playerID, firstName, lastName]);
+    this.router.navigate(["/details", playerID, firstName, lastName, teamID]);
   }
 }

@@ -11,7 +11,14 @@
       <div
         *ngFor="let item of players"
         class="results"
-        (click)="showDetails(item.player_id, item.name_first, item.name_last)"
+        (click)="
+          showDetails(
+            item.player_id,
+            item.name_first,
+            item.name_last,
+            item.team_id
+          )
+        "
       >
         {{ item.name_first }} {{ item.name_last }}
       </div>
@@ -20,7 +27,12 @@
       <div
         class="results"
         (click)="
-          showDetails(players.player_id, players.name_first, players.name_last)
+          showDetails(
+            players.player_id,
+            players.name_first,
+            players.name_last,
+            players.team_id
+          )
         "
       >
         {{ players.name_first }} {{ players.name_last }}
