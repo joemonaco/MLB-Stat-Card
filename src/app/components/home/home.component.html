@@ -1,3 +1,5 @@
+<h1>HOME PAGE</h1>
+
 <input #box (keyup)="onEnter(box.value)" (keyup.enter)="getData()" />
 <button [disabled]="value == ''" (click)="getData()">Search</button>
 
@@ -7,36 +9,40 @@
   </ng-container>
   <ng-template #results>
     <h3>{{ numReturned }} Results Found For "{{ searchTerm }}"</h3>
-    <ng-container *ngIf="numReturned > 1; else onePlayer">
-      <div
-        *ngFor="let item of players"
-        class="results"
-        (click)="
-          showDetails(
-            item.player_id,
-            item.name_first,
-            item.name_last,
-            item.team_id
-          )
-        "
-      >
-        {{ item.name_first }} {{ item.name_last }}
-      </div>
-    </ng-container>
-    <ng-template #onePlayer>
-      <div
-        class="results"
-        (click)="
-          showDetails(
-            players.player_id,
-            players.name_first,
-            players.name_last,
-            players.team_id
-          )
-        "
-      >
-        {{ players.name_first }} {{ players.name_last }}
-      </div>
-    </ng-template>
+    <div class="grid-container">
+      <ng-container *ngIf="numReturned > 1; else onePlayer">
+        <div
+          *ngFor="let item of players"
+          class="results"
+          (click)="
+            showDetails(
+              item.player_id,
+              item.name_first,
+              item.name_last,
+              item.team_id
+            )
+          "
+        >
+          <h4>{{ item.name_first }} {{ item.name_last }}</h4>
+          <img [src]="getPhoto(item.player_id)" />
+        </div>
+      </ng-container>
+      <ng-template #onePlayer>
+        <div
+          class="results"
+          (click)="
+            showDetails(
+              players.player_id,
+              players.name_first,
+              players.name_last,
+              players.team_id
+            )
+          "
+        >
+          <h4>{{ players.name_first }} {{ players.name_last }}</h4>
+          <img [src]="getPhoto(players.player_id)" />
+        </div>
+      </ng-template>
+    </div>
   </ng-template>
 </div>

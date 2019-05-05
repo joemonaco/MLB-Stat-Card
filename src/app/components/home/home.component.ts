@@ -7,6 +7,8 @@ import { SearchServiceService } from "../../services/search-service.service";
 import { RouterModule, Router } from "@angular/router";
 import { last } from "@angular/router/src/utils/collection";
 
+import { DomSanitizer } from "@angular/platform-browser";
+
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
@@ -20,11 +22,19 @@ export class HomeComponent implements OnInit {
   buttonClicked = false;
   numReturned = -1;
   searchTerm = "";
+
   constructor(
     private searchService: SearchServiceService,
-    private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {}
 
+  getPhoto(id: String) {
+    let photoURL =
+      "https://securea.mlb.com/mlb/images/players/head_shot/" + id + "@2x.jpg";
+
+    return this.sanitizer.bypassSecurityTrustUrl(photoURL);
+  }
   getData() {
     if (this.value != "") {
       this.searchTerm = this.value;
