@@ -1,38 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import { Row } from "../../row";
+import { SearchedPlayer } from "../../models/SearchedPlayer";
 import { Observable } from "rxjs";
-import { map } from 'rxjs/operators';
+import { map } from "rxjs/operators";
 import { SearchServiceService } from "../../services/search-service.service";
-import { RouterModule, Router } from '@angular/router';
-
+import { RouterModule, Router } from "@angular/router";
+import { last } from "@angular/router/src/utils/collection";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-
   ngOnInit() {}
 
-  players: Observable<Row[]>;
+  players: Observable<SearchedPlayer[]>;
   value = "";
   buttonClicked = false;
   numReturned = -1;
   searchTerm = "";
-  constructor(private searchService: SearchServiceService,private router: Router) {}
+  constructor(
+    private searchService: SearchServiceService,
+    private router: Router
+  ) {}
 
   getData() {
     if (this.value != "") {
-      
       this.searchTerm = this.value;
-      
+
       this.searchService.getPlayers(this.searchTerm).subscribe(data => {
         let res = data["search_player_all"];
         let query = res["queryResults"];
         let row = query["row"];
-        if(row != null) {
+        if (row != null) {
           this.numReturned = row.length;
           this.players = row;
           console.log(this.players);
@@ -41,8 +42,7 @@ export class HomeComponent implements OnInit {
         }
 
         this.buttonClicked = true;
-      })
-
+      });
     }
   }
 
@@ -50,9 +50,8 @@ export class HomeComponent implements OnInit {
     this.value = v;
   }
 
-  doSomething(playerID: String) {
+  showDetails(playerID: String, firstName: String, lastName: String) {
     console.log(playerID);
-    this.router.navigate(['/details', playerID]);
+    this.router.navigate(["/details", playerID, firstName, lastName]);
   }
-
 }

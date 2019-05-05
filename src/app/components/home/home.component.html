@@ -1,4 +1,3 @@
-
 <input #box (keyup)="onEnter(box.value)" (keyup.enter)="getData()" />
 <button [disabled]="value == ''" (click)="getData()">Search</button>
 
@@ -9,13 +8,23 @@
   <ng-template #results>
     <h3>{{ numReturned }} Results Found For "{{ searchTerm }}"</h3>
     <ng-container *ngIf="numReturned > 1; else onePlayer">
-      <div *ngFor="let item of players" class="results">
-        <!-- <a routerLink="/details"> {{ item.name_first }} {{ item.name_last }}</a> -->
-        <li (click)="doSomething(item.player_id)">{{ item.name_first }} {{ item.name_last }}</li>
+      <div
+        *ngFor="let item of players"
+        class="results"
+        (click)="showDetails(item.player_id, item.name_first, item.name_last)"
+      >
+        {{ item.name_first }} {{ item.name_last }}
       </div>
     </ng-container>
     <ng-template #onePlayer>
-      <div class="results" (click)="doSomething(players.player_id)">{{ players.name_first }} {{ players.name_last }}</div>
+      <div
+        class="results"
+        (click)="
+          showDetails(players.player_id, players.name_first, players.name_last)
+        "
+      >
+        {{ players.name_first }} {{ players.name_last }}
+      </div>
     </ng-template>
   </ng-template>
 </div>

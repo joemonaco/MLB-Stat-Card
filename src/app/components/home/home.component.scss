@@ -1,20 +1,23 @@
 h1 {
-    font-size: 3rem;
+  font-size: 3rem;
+}
+
+input {
+  font-size: 1.5em;
+}
+
+button {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 2.1rem;
+}
+
+.results {
+  font-size: 2rem;
+  &:hover {
+    cursor: pointer;
+    color: blue;
   }
-  
-  input {
-    font-size: 1.5em;
-  }
-  
-  button {
-    font-size: 1.5rem;
-  }
-  
-  h3 {
-    font-size: 2.1rem;
-  }
-  
-  .results {
-    font-size: 2rem;
-  }
-  
+}

@@ -1,5 +1,5 @@
-export interface Row {
-  position: "LF";
+export interface SearchedPlayer {
+  position: String;
   birth_country: String;
   weight: String;
   birth_state: String;
