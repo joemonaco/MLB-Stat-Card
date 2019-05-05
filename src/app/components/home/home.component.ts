@@ -15,8 +15,6 @@ import { DomSanitizer } from "@angular/platform-browser";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-  ngOnInit() {}
-
   players: Observable<SearchedPlayer[]>;
   value = "";
   buttonClicked = false;
@@ -28,6 +26,17 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private sanitizer: DomSanitizer
   ) {}
+
+  ngOnInit() {
+    this.searchService.getPlayers("").subscribe(data => {
+      let res = data["search_player_all"];
+      let query = res["queryResults"];
+      let row = query["row"];
+      if (row != null) {
+        this.players = row;
+      }
+    });
+  }
 
   getPhoto(id: String) {
     let photoURL =
@@ -58,6 +67,7 @@ export class HomeComponent implements OnInit {
 
   onEnter(v) {
     this.value = v;
+    this.getData();
   }
 
   showDetails(
@@ -66,7 +76,6 @@ export class HomeComponent implements OnInit {
     lastName: String,
     teamID: String
   ) {
-    console.log(playerID);
     this.router.navigate(["/details", playerID, firstName, lastName, teamID]);
   }
 }

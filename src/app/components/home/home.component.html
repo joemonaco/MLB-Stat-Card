@@ -1,9 +1,9 @@
 <h1>HOME PAGE</h1>
-
+<!-- #box (keyup)="onEnter(box.value) -->
 <input #box (keyup)="onEnter(box.value)" (keyup.enter)="getData()" />
 <button [disabled]="value == ''" (click)="getData()">Search</button>
 
-<div *ngIf="buttonClicked">
+<ng-container *ngIf="buttonClicked; else showAll">
   <ng-container *ngIf="numReturned == -1; else results">
     <h3>No Results Found For "{{ searchTerm }}"</h3>
   </ng-container>
@@ -24,7 +24,10 @@
           "
         >
           <h4>{{ item.name_first }} {{ item.name_last }}</h4>
-          <img [src]="getPhoto(item.player_id)" />
+          <img
+            [src]="getPhoto(item.player_id)"
+            onError="this.src='https://cdn2.iconfinder.com/data/icons/sports-attitudes/1451/baseball-512.png'"
+          />
         </div>
       </ng-container>
       <ng-template #onePlayer>
@@ -40,9 +43,37 @@
           "
         >
           <h4>{{ players.name_first }} {{ players.name_last }}</h4>
-          <img [src]="getPhoto(players.player_id)" />
+          <img
+            [src]="getPhoto(players.player_id)"
+            onError="this.src='https://cdn2.iconfinder.com/data/icons/sports-attitudes/1451/baseball-512.png'"
+          />
         </div>
       </ng-template>
     </div>
   </ng-template>
-</div>
+</ng-container>
+<ng-template #showAll>
+  <div class="grid-container">
+    <div
+      *ngFor="let item of players"
+      class="results"
+      (click)="
+        showDetails(
+          item.player_id,
+          item.name_first,
+          item.name_last,
+          item.team_id
+        )
+      "
+    >
+      <h4>{{ item.name_first }} {{ item.name_last }}</h4>
+      <img
+        [src]="getPhoto(item.player_id)"
+        onError="this.src='https://cdn2.iconfinder.com/data/icons/sports-attitudes/1451/baseball-512.png'"
+      />
+      <!-- <img
+        src="https://cdn2.iconfinder.com/data/icons/sports-attitudes/1451/baseball-512.png"
+      /> -->
+    </div>
+  </div>
+</ng-template>
