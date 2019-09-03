@@ -21,27 +21,17 @@ li {
   list-style-type: none;
 }
 
-.card {
-  text-align: center;
-  margin: 0 auto;
-  width: 100%;
-  align-content: center;
+.all {
+  display: flex;
   justify-content: center;
-  // margin-left: 200px;
 }
 
-.logo-img {
-  position: absolute;
-  top: 220px;
-  left: 950px;
-  width: 80px;
-  height: 80px;
-  z-index: 3;
+.card {
+  border: none;
+  text-align: center;
 }
-
 .player-img {
   z-index: 1;
-  position: relative;
   top: 0;
   left: 0;
   width: 400px;
@@ -54,4 +44,8 @@ li {
   &:hover {
     cursor: pointer;
   }
+}
+
+.stats {
+  margin-top: 10vh;
 }
