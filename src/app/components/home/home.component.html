@@ -6,9 +6,9 @@
   placeholder="Enter a name"
 />
 
-<div class="logos" *ngFor="let item of logos">
+<!-- <div class="logos" *ngFor="let item of logos">
   <img style="width:20px; height: 20px;" [src]="item" alt="" />
-</div>
+</div> -->
 
 <ng-container *ngIf="buttonClicked; else showAll">
   <ng-container *ngIf="numReturned == -1; else results">

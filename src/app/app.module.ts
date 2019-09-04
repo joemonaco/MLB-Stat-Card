@@ -7,6 +7,7 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { SearchServiceService } from "../app/services/search-service.service";
 import { PlayerDetailsService } from "./services/player-details.service";
+import { TeamService } from "./services/team.service";
 
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./components/home/home.component";
@@ -17,7 +18,7 @@ import { NavComponent } from './components/nav/nav.component';
 @NgModule({
   declarations: [AppComponent, HomeComponent, PlayerDetailComponent, TeamsComponent, NavComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
-  providers: [SearchServiceService, PlayerDetailsService],
+  providers: [SearchServiceService, PlayerDetailsService, TeamService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

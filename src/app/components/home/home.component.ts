@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
   numReturned = -1;
   searchTerm = "";
 
-  logos: any = [];
 
   constructor(
     private searchService: SearchServiceService,
@@ -36,15 +35,6 @@ export class HomeComponent implements OnInit {
         this.players = row;
       }
     });
-
-    for (var i = 108; i < 122; i++) {
-      this.logos.push("https://www.mlbstatic.com/team-logos/" + i + ".svg");
-    }
-    for (var i = 133; i < 148; i++) {
-      this.logos.push("https://www.mlbstatic.com/team-logos/" + i + ".svg");
-    }
-
-    this.logos.push("https://www.mlbstatic.com/team-logos/158.svg");
   }
 
   getPhoto(id: String) {

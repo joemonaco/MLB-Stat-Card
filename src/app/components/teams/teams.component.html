@@ -1,3 +1,30 @@
-<p>
-  teams works!
-</p>
+<!-- <div class="container"> -->
+<h1 class="heading">{{teamName}}</h1>
+<div class="logo-container" id="logos">
+  <div class="logos" *ngFor="let logo of logos">
+    <img (click)="showTeamData(logo.teamID)" class="logo" [src]=logo.imgSrc />
+  </div>
+</div>
+
+
+<div class="grid-container">
+    <div
+      *ngFor="let item of details"
+      class="results"
+      (click)="
+        showDetails(
+          item.player_id,
+          item.name_first,
+          item.name_last,
+          item.team_id
+        )
+      "
+    >
+      <h4> {{item.name_display_first_last}}</h4>
+      <img
+        [src]="getPhoto(item.player_id)"
+        onError="this.src='https://cdn2.iconfinder.com/data/icons/sports-attitudes/1451/baseball-512.png'"
+      />
+    </div>
+</div>
+<!-- </div> -->
