@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
   numReturned = -1;
   searchTerm = "";
 
-
   constructor(
     private searchService: SearchServiceService,
     private router: Router,
