@@ -1,10 +1,16 @@
-<h1>HOME PAGE</h1>
-<input
-  #box
-  (keyup)="onEnter(box.value)"
-  (keyup.enter)="getData()"
-  placeholder="Enter a name"
-/>
+<h1 class="heading">MLB Stats!</h1>
+
+<div class="input">
+    <input
+    class="input-box"
+      #box
+      (keyup)="onEnter(box.value)"
+      (keyup.enter)="getData()"
+      placeholder="Enter a name"
+    />
+  </div>
+
+
 
 <!-- <div class="logos" *ngFor="let item of logos">
   <img style="width:20px; height: 20px;" [src]="item" alt="" />
@@ -15,7 +21,8 @@
     <h3>No Results Found For "{{ searchTerm }}"</h3>
   </ng-container>
   <ng-template #results>
-    <h3>{{ numReturned }} Results Found For "{{ searchTerm }}"</h3>
+
+    <h3 *ngIf="numReturned != -2">{{ numReturned }} Results Found For "{{ searchTerm }}"</h3>
     <div class="grid-container">
       <ng-container *ngIf="numReturned > 1; else onePlayer">
         <div
@@ -39,6 +46,7 @@
       </ng-container>
       <ng-template #onePlayer>
         <div
+        *ngIf="numReturned != -2"
           class="results"
           (click)="
             showDetails(

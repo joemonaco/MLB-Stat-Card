@@ -26,14 +26,14 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.searchService.getPlayers("").subscribe(data => {
-      let res = data["search_player_all"];
-      let query = res["queryResults"];
-      let row = query["row"];
-      if (row != null) {
-        this.players = row;
-      }
-    });
+    // this.searchService.getPlayers("").subscribe(data => {
+    //   let res = data["search_player_all"];
+    //   let query = res["queryResults"];
+    //   let row = query["row"];
+    //   if (row != null) {
+    //     this.players = row;
+    //   }
+    // });
   }
 
   getPhoto(id: String) {
@@ -42,23 +42,32 @@ export class HomeComponent implements OnInit {
 
     return this.sanitizer.bypassSecurityTrustUrl(photoURL);
   }
+
+
   getData() {
     this.searchTerm = this.value;
 
-    this.searchService.getPlayers(this.searchTerm).subscribe(data => {
-      let res = data["search_player_all"];
-      let query = res["queryResults"];
-      let row = query["row"];
-      if (row != null) {
-        this.numReturned = row.length;
-        this.players = row;
-        console.log(this.players);
-      } else {
-        this.numReturned = -1;
-      }
+    if(this.searchTerm != "") {
 
+        this.searchService.getPlayers(this.searchTerm).subscribe(data => {
+          let res = data["search_player_all"];
+          let query = res["queryResults"];
+          let row = query["row"];
+          if (row != null) {
+            this.numReturned = row.length;
+            this.players = row;
+            console.log(this.players);
+          } else {
+            this.numReturned = -1;
+          }
+
+          this.buttonClicked = true;
+      });
+    } else {
+      this.players = <any>[];
+      this.numReturned = -2;
       this.buttonClicked = true;
-    });
+    }
   }
 
   onEnter(v) {

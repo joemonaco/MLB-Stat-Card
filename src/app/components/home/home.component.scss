@@ -4,9 +4,24 @@ h1 {
   margin-top: 2vh;
 }
 
+.heading {
+  text-align: center;
+  font-family: 'Lexend Tera', sans-serif;
+}
+
+.input {
+ display: flex;
+ justify-content: center;
+}
+
+
 input {
+  // margin: 0 auto;
+  width: 50vw;
+  justify-content: center;
+  text-align: center;
   font-size: 1.5em;
-  margin-left: 40px;
+  // margin-left: 40px;
   border: 2px solid black;
   margin-bottom: 2vh;
   margin-top: 2vh;
