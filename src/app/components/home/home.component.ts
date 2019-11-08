@@ -25,16 +25,7 @@ export class HomeComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {}
 
-  ngOnInit() {
-    // this.searchService.getPlayers("").subscribe(data => {
-    //   let res = data["search_player_all"];
-    //   let query = res["queryResults"];
-    //   let row = query["row"];
-    //   if (row != null) {
-    //     this.players = row;
-    //   }
-    // });
-  }
+  ngOnInit() { }
 
   getPhoto(id: String) {
     let photoURL =
@@ -43,25 +34,23 @@ export class HomeComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustUrl(photoURL);
   }
 
-
   getData() {
     this.searchTerm = this.value;
 
-    if(this.searchTerm != "") {
+    if (this.searchTerm != "") {
+      this.searchService.getPlayers(this.searchTerm).subscribe(data => {
+        let res = data["search_player_all"];
+        let query = res["queryResults"];
+        let row = query["row"];
+        if (row != null) {
+          this.numReturned = row.length;
+          this.players = row;
+          console.log(this.players);
+        } else {
+          this.numReturned = -1;
+        }
 
-        this.searchService.getPlayers(this.searchTerm).subscribe(data => {
-          let res = data["search_player_all"];
-          let query = res["queryResults"];
-          let row = query["row"];
-          if (row != null) {
-            this.numReturned = row.length;
-            this.players = row;
-            console.log(this.players);
-          } else {
-            this.numReturned = -1;
-          }
-
-          this.buttonClicked = true;
+        this.buttonClicked = true;
       });
     } else {
       this.players = <any>[];
