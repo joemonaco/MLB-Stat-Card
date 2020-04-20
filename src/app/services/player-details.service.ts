@@ -11,7 +11,7 @@ export class PlayerDetailsService {
 
   getDetails(playerID: String): Observable<PlayerDetail[]> {
     let ROOT_URL =
-      "http://lookup-service-prod.mlb.com/json/named.sport_hitting_tm.bam?league_list_id='mlb'&game_type='R'&season='2019'&player_id='" +
+      "http://lookup-service-prod.mlb.com/json/named.sport_hitting_tm.bam?league_list_id='mlb'&game_type='R'&season='2020'&player_id='" +
       playerID +
       "'";
 
